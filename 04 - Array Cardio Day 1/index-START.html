@@ -37,29 +37,154 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    /*
+    const fifteen=inventors.filter((inventor)=>{
+      if(inventor.year>=1500 && inventor.year<1600){
+        return true;
+      }
+    });
+    */
+    //console.log(ss(people[2]));
+    const fifteen=inventors.filter((inventor)=> (inventor.year>=1500 && inventor.year<1600))
+    console.log(fifteen);
+    console.table(fifteen);
+    console.log("___________________________________")
+
+    const sev=inventors.filter((inventor)=>{
+      let s=inventor.first
+    
+      if(s.startsWith('A')){
+        return true
+      }
+    });
+    console.table(sev)
+
+    console.log("__________________________________________")
+
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    /*
 
+    
+    const fullNames=inventors.map((inventor)=>{
+      return inventor.first+" "+inventor.last
+    });*/
+
+
+    const fullNames=inventors.map(inventor=>inventor.first+" "+inventor.last)
+    console.log(fullNames)
+    console.log("__________________________________________")
+
+
+
+    const nfn=inventors.map(dname);
+
+    function dname(inventor){
+      let s="";
+      const obj={
+
+      };
+      obj.name=`${inventor.first} ${inventor.last}`;
+      obj.age=inventor.passed-inventor.year;
+      s=`${inventor.first} ${inventor.last} - ${inventor.passed-inventor.year} `
+      return obj
+    }
+    console.log(nfn)
+
+    console.log("__________________________________________")
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    /*
+    const orderes=inventors.sort(function(a,b){
+      if(a.year>b.year){
+        return -1
+      }
+      else{
+        return 1
+      }
+    });
+  */
+    const orderes=inventors.sort((a,b)=>(a.year>b.year)?1:-1);
+    console.table(orderes)
+    console.log("____________________&&&______________________")
+
+
+    const dds=inventors.sort(ddsf);
+
+    function ddsf(inventor1,inventor2){
+      
+      if((inventor1.passed-inventor1.year)>(inventor2.passed-inventor2.year)){
+        return 1;
+      }
+      else{
+        return -1;
+      }
+    
+    }
+    console.table(dds)
+    console.log("______________________________________________")
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    const totale=inventors.reduce((total,inventor)=>{
+      return total+(inventor.passed-inventor.year);
+    },0);
+    console.table(totale)
+    console.log("__________________________________________")
 
+    console.log("______________________________________________")
     // 5. Sort the inventors by years lived
 
+    const oldest=inventors.sort((a,b)=>{
+      const f1=a.passed-a.year;
+      const s1=b.passed-b.year;
+      
+      if(f1>s1){
+        return -1;
+        
+      }
+      else{
+        return 1;
+      }
+    })
+
+    console.table(oldest)
+
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+   
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
-
+   /*
+    const category=document.querySelector(".mw-category");
+    const links=Array.from(category.querySelectorAll("a"))
+    const de=links.map(link=>link.textContent).filter(street=>street.includes("de"))
+*/
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const alpha=people.sort((a,b)=>{
+     
+      const [alast,afirst]=a.split(", ")
+      const [blast,bfirst]=b.split(", ")
+
+      return alast>blast?1:-1;
+
+    });
+    console.log(alpha)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const trans=data.reduce((obj,item)=>{
+      console.log(item)
+      if(obj[item]===undefined){
+        obj[item]=0
+      }
+      obj[item]+=1
+      return obj
 
+    },{})
+    console.log(trans)
   </script>
 </body>
 </html>
